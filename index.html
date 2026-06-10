@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 Ano de Amor 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose: #e8a0b8;
+      --rose-deep: #c76b8a;
+      --blush: #fdf2f6;
+      --cream: #fffaf7;
+      --gold: #d4a574;
+      --text: #3d2c35;
+      --text-soft: #6b5560;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* Floating hearts background */
+    .hearts-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart-particle {
+      position: absolute;
+      font-size: 1rem;
+      opacity: 0;
+      animation: floatHeart linear infinite;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.4; }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background: rgba(255, 250, 247, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(232, 160, 184, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-soft);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--rose-deep);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+      background: radial-gradient(ellipse at 50% 0%, rgba(232, 160, 184, 0.15) 0%, transparent 60%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border: 1px solid var(--rose);
+      border-radius: 2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      margin-bottom: 2rem;
+      animation: fadeInDown 1s ease;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 10vw, 6.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--rose-deep);
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-soft);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+
+    .hero-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      color: var(--text);
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+
+    .hero-names span {
+      color: var(--rose-deep);
+      margin: 0 0.5rem;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      animation: bounce 2s infinite;
+      color: var(--rose);
+      font-size: 1.5rem;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* Counter Section */
+    .counter-section {
+      padding: 5rem 1.5rem;
+      background: var(--blush);
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-soft);
+      margin-bottom: 3rem;
+      font-size: 0.95rem;
+    }
+
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .counter-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(199, 107, 138, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .counter-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .counter-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: var(--rose-deep);
+      line-height: 1;
+    }
+
+    .counter-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-soft);
+      margin-top: 0.5rem;
+    }
+
+    /* Timeline Section */
+    .timeline-section {
+      padding: 5rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--rose), var(--gold));
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 0 3rem;
+      position: relative;
+      width: 50%;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-item:nth-child(even) {
+      align-self: flex-end;
+      margin-left: 50%;
+      justify-content: flex-start;
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(199, 107, 138, 0.1);
+      max-width: 260px;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-right: 2rem;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: 2rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 1.5rem;
+      width: 14px;
+      height: 14px;
+      background: var(--rose-deep);
+      border: 3px solid var(--cream);
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+      right: -7px;
+      transform: translateX(50%);
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -7px;
+      transform: translateX(-50%);
+    }
+
+    .timeline-date {
+      font-size: 0.75rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content p {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    /* Carousel Section */
+    .gallery-section {
+      padding: 5rem 1.5rem;
+      background: var(--blush);
+      position: relative;
+      z-index: 1;
+    }
+
+    .carousel {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .carousel-viewport {
+      overflow: hidden;
+      border-radius: 1.25rem;
+      box-shadow: 0 12px 40px rgba(199, 107, 138, 0.2);
+      background: white;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      aspect-ratio: 4 / 5;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--rose-deep);
+      font-size: 1.4rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(199, 107, 138, 0.25);
+      transition: transform 0.2s ease, background 0.2s ease;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .carousel-btn:hover {
+      transform: translateY(-50%) scale(1.08);
+      background: white;
+    }
+
+    .carousel-btn.prev { left: -1rem; }
+    .carousel-btn.next { right: -1rem; }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(199, 107, 138, 0.25);
+      cursor: pointer;
+      padding: 0;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .carousel-dot.active {
+      background: var(--rose-deep);
+      transform: scale(1.2);
+    }
+
+    .carousel-counter {
+      text-align: center;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      letter-spacing: 0.05em;
+    }
+
+    /* Love Letter Section */
+    .letter-section {
+      padding: 5rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .letter-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 3rem 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 40px rgba(199, 107, 138, 0.12);
+      position: relative;
+      border: 1px solid rgba(232, 160, 184, 0.2);
+    }
+
+    .letter-card::before {
+      content: '💌';
+      position: absolute;
+      top: -1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      background: var(--cream);
+      padding: 0 0.5rem;
+    }
+
+    .letter-greeting {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--rose-deep);
+    }
+
+    .letter-body {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--text-soft);
+      margin-bottom: 2rem;
+    }
+
+    .letter-body p {
+      margin-bottom: 1rem;
+    }
+
+    .letter-signature {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      text-align: right;
+      color: var(--text);
+    }
+
+    /* Music player hint */
+    .music-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 100;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      background: var(--rose-deep);
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(199, 107, 138, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .music-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .music-btn.playing {
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 15px rgba(199, 107, 138, 0.4); }
+      50% { box-shadow: 0 4px 25px rgba(199, 107, 138, 0.7); }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background: var(--text);
+      color: rgba(255, 255, 255, 0.7);
+      position: relative;
+      z-index: 1;
+    }
+
+    footer .footer-heart {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    footer .date-footer {
+      margin-top: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--rose);
+    }
+
+    /* Responsive timeline */
+    @media (max-width: 600px) {
+      .timeline::before {
+        left: 1rem;
+      }
+
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        justify-content: flex-start;
+        padding-left: 2.5rem;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-dot,
+      .timeline-item:nth-child(even) .timeline-dot {
+        left: 1rem;
+        transform: translateX(-50%);
+      }
+
+      nav {
+        gap: 1rem;
+        padding: 0.8rem 1rem;
+      }
+
+      nav a {
+        font-size: 0.7rem;
+      }
+
+      .letter-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .carousel-btn.prev { left: 0.5rem; }
+      .carousel-btn.next { right: 0.5rem; }
+
+      .carousel-slide {
+        aspect-ratio: 3 / 4;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating hearts -->
+  <div class="hearts-bg" id="heartsBg"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#tempo">Nosso Tempo</a>
+    <a href="#historia">História</a>
+    <a href="#memorias">Memórias</a>
+    <a href="#carta">Carta</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="hero-badge">✨ 1 ano de namoro ✨</div>
+    <h1>Um ano de <em>amor</em></h1>
+    <p class="hero-subtitle">
+      365 dias de risadas, abraços, sonhos compartilhados e um amor que cresce a cada instante.
+    </p>
+    <p class="hero-names">
+      <span id="nome1">Seu Nome</span> & <span id="nome2">Nome dela(e)</span>
+    </p>
+    <div class="scroll-hint">↓</div>
+  </section>
+
+  <!-- Counter -->
+  <section class="counter-section" id="tempo">
+    <h2 class="section-title">Nosso Tempo Juntos</h2>
+    <p class="section-subtitle">Desde <strong id="dataInicio">10 de junho de 2025</strong></p>
+    <div class="counter-grid">
+      <div class="counter-item">
+        <div class="counter-number" id="days">0</div>
+        <div class="counter-label">Dias</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter-number" id="hours">0</div>
+        <div class="counter-label">Horas</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter-number" id="minutes">0</div>
+        <div class="counter-label">Minutos</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter-number" id="seconds">0</div>
+        <div class="counter-label">Segundos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="timeline-section" id="historia">
+    <h2 class="section-title">Nossa História</h2>
+    <p class="section-subtitle">Os momentos que marcaram nosso caminho</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Primeiro encontro</div>
+          <h3>O começo de tudo</h3>
+          <p>O dia em que nossos olhares se cruzaram e o mundo pareceu parar por um instante.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Primeiro beijo</div>
+          <h3>Um momento mágico</h3>
+          <p>Quando percebi que não queria mais estar longe de você.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Primeira viagem</div>
+          <h3>Aventuras juntos</h3>
+          <p>Descobrindo o mundo de mãos dadas, criando memórias inesquecíveis.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Hoje</div>
+          <h3>1 ano de namoro</h3>
+          <p>E esse é só o começo de uma história linda que ainda vamos escrever juntos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel -->
+  <section class="gallery-section" id="memorias">
+    <h2 class="section-title">Nossas Memórias</h2>
+    <p class="section-subtitle">Cada foto conta um pedacinho da nossa história</p>
+    <div class="carousel" id="carousel">
+      <button class="carousel-btn prev" id="carouselPrev" aria-label="Foto anterior">‹</button>
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide"><img src="1.jpeg" alt="Memória 1"></div>
+          <div class="carousel-slide"><img src="2.jpeg" alt="Memória 2"></div>
+          <div class="carousel-slide"><img src="3.jpeg" alt="Memória 3"></div>
+          <div class="carousel-slide"><img src="4.jpeg" alt="Memória 4"></div>
+          <div class="carousel-slide"><img src="5.jpeg" alt="Memória 5"></div>
+          <div class="carousel-slide"><img src="6.jpeg" alt="Memória 6"></div>
+          <div class="carousel-slide"><img src="7.jpeg" alt="Memória 7"></div>
+        </div>
+      </div>
+      <button class="carousel-btn next" id="carouselNext" aria-label="Próxima foto">›</button>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <p class="carousel-counter"><span id="carouselCurrent">1</span> / 7</p>
+    </div>
+  </section>
+
+  <!-- Love Letter -->
+  <section class="letter-section" id="carta">
+    <h2 class="section-title">Uma Carta Para Você</h2>
+    <p class="section-subtitle">Palavras do coração</p>
+    <div class="letter-card">
+      <div class="letter-greeting">Meu amor,</div>
+      <div class="letter-body">
+        <p>
+          Hoje completamos um ano de namoro. Quem diria que uma simples mensagem — 
+          “Ainda existem pessoas que vão a uma biblioteca em 2025?” — nos traria até aqui?
+        </p>
+        <p>
+          Uma frase tão simples acabou mudando a minha vida para sempre. Desde então, a cada dia que passa, 
+          sou mais feliz por ter conhecido você e por compartilhar momentos incríveis e inesquecíveis ao seu lado.
+        </p>
+        <p>
+          Cada sorriso, cada olhar, cada abraço e cada conversa boba se tornaram especiais para mim. 
+          Com você, tudo ganha mais cor, mais sentido e mais leveza. É como se eu tivesse descoberto 
+          uma nova forma de viver e enxergar a vida.
+        </p>
+        <p>
+          Obrigado por estar ao meu lado nos dias bons e também nos dias difíceis. Obrigado pela paciência, 
+          pelo carinho, pelo apoio e por me fazer sentir amado de uma forma que eu nunca imaginei ser possível.
+        </p>
+        <p>
+          Ao longo deste ano, construímos memórias que vou guardar para sempre. E o mais bonito é saber 
+          que ainda temos tantos sonhos, planos, viagens, risadas e momentos para viver juntos.
+        </p>
+        <p>
+          Você se tornou uma das pessoas mais importantes da minha vida, alguém que admiro, respeito e amo 
+          profundamente. Se este primeiro ano foi tão especial, mal posso esperar para descobrir tudo o que 
+          os próximos anos reservam para nós.
+        </p>
+        <p>
+          Adoro as nossas piadas internas, aquelas que só nós entendemos, e a forma como criamos nossas 
+          próprias palavras e expressões. São coisas simples, mas que tornam a nossa história única e ainda 
+          mais especial para mim. Você é a minha pessoa “Feverita”.
+        </p>
+        <p>
+          Feliz 1 ano de namoro, meu amor. Que esta seja apenas a primeira página de uma história longa, 
+          linda e cheia de felicidade. ❤️
+        </p>
+      </div>
+      <div class="letter-signature">Com todo meu amor,<br>Seu GatinhoA ❤️</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span class="footer-heart">💕</span>
+    <p>Feito com amor, para celebrar o nosso primeiro ano juntos.</p>
+    <p class="date-footer">10 de junho de 2026</p>
+  </footer>
+
+  <!-- Music button (optional) -->
+  <button class="music-btn" id="musicBtn" title="Tocar música">🎵</button>
+  <audio id="bgMusic" loop preload="auto" autoplay>
+    <source src="Musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // ========== PERSONALIZE AQUI ==========
+    const CONFIG = {
+      nome1: 'Paulo',
+      nome2: 'Julia',
+      dataInicio: '2025-06-11', // Formato: AAAA-MM-DD
+      dataInicioTexto: '11 de junho de 2025',
+      dataAniversario: '11 de junho de 2026'
+    };
+    // ======================================
+
+    // Apply config
+    document.getElementById('nome1').textContent = CONFIG.nome1;
+    document.getElementById('nome2').textContent = CONFIG.nome2;
+    document.getElementById('dataInicio').textContent = CONFIG.dataInicioTexto;
+    document.querySelector('.date-footer').textContent = CONFIG.dataAniversario;
+
+    // Counter
+    function updateCounter() {
+      const start = new Date(CONFIG.dataInicio + 'T00:00:00');
+      const now = new Date();
+      const diff = now - start;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 1000);
+
+    // Floating hearts
+    const heartsBg = document.getElementById('heartsBg');
+    const heartChars = ['💕', '💗', '💖', '♥', '❤'];
+
+    for (let i = 0; i < 15; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart-particle';
+      heart.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.animationDuration = (8 + Math.random() * 12) + 's';
+      heart.style.animationDelay = Math.random() * 10 + 's';
+      heart.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
+      heartsBg.appendChild(heart);
+    }
+
+    // Timeline scroll animation
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    timelineItems.forEach(item => observer.observe(item));
+
+    // Carousel
+    const carouselTrack = document.getElementById('carouselTrack');
+    const carouselDots = document.getElementById('carouselDots');
+    const carouselCurrent = document.getElementById('carouselCurrent');
+    const slides = carouselTrack.querySelectorAll('.carousel-slide');
+    let currentSlide = 0;
+    let touchStartX = 0;
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Ir para foto ${index + 1}`);
+      dot.addEventListener('click', () => goToSlide(index));
+      carouselDots.appendChild(dot);
+    });
+
+    const dots = carouselDots.querySelectorAll('.carousel-dot');
+
+    function goToSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+      carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+      carouselCurrent.textContent = currentSlide + 1;
+    }
+
+    document.getElementById('carouselPrev').addEventListener('click', () => goToSlide(currentSlide - 1));
+    document.getElementById('carouselNext').addEventListener('click', () => goToSlide(currentSlide + 1));
+
+    carouselTrack.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carouselTrack.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) {
+        goToSlide(diff > 0 ? currentSlide + 1 : currentSlide - 1);
+      }
+    }, { passive: true });
+
+    setInterval(() => goToSlide(currentSlide + 1), 5000);
+
+    // Music — autoplay on load + fallback on first interaction
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+
+    function setMusicPlaying(playing) {
+      musicBtn.classList.toggle('playing', playing);
+      musicBtn.title = playing ? 'Pausar música' : 'Tocar música';
+    }
+
+    function startMusic() {
+      return bgMusic.play()
+        .then(() => setMusicPlaying(true))
+        .catch(() => {});
+    }
+
+    startMusic();
+    window.addEventListener('load', () => startMusic());
+
+    ['click', 'touchstart', 'keydown', 'scroll'].forEach((event) => {
+      document.addEventListener(event, () => startMusic(), { once: true, passive: true });
+    });
+
+    musicBtn.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        startMusic();
+      } else {
+        bgMusic.pause();
+        setMusicPlaying(false);
+      }
+    });
+  </script>
+</body>
+</html>
